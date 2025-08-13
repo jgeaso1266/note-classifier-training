@@ -6,10 +6,10 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "tensorflow",
-        "keras",
-        "numpy",
-        "tqdm",
+        "tensorflow>=2.10.0",
+        "keras<2.14.0",
+        "numpy>=1.21.0",
+        "tqdm>=4.62.0",
         "opencv-python"
     ],
 )
