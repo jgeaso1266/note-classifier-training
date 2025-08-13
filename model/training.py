@@ -140,13 +140,13 @@ def build_piano_model(
     x = layers.BatchNormalization()(x)
     x = layers.LeakyReLU()(x)
     
-    x = tf.pad(x, paddings=[[0, 0], [0, 0], [1, 1], [1, 1], [0, 0]])
+    x = layers.Lambda(lambda t: tf.pad(t, paddings=[[0, 0], [0, 0], [1, 1], [1, 1], [0, 0]]))(x)
     x = layers.Conv3D(32, kernel_size=(NUM_FRAMES, 3, 3), padding="valid")(x)
     x = layers.BatchNormalization()(x)
     x = layers.LeakyReLU()(x)
-    print(x.shape)
+    
     # Squeeze the time dimension
-    x = tf.squeeze(x, axis=1)
+    x = layers.Lambda(lambda t: tf.squeeze(t, axis=1))(x)
     
     # Process the last frame separately
     last_frame = inputs[:, -1, :, :, :]

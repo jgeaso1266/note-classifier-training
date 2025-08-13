@@ -1,6 +1,9 @@
 # Distribution / packaging
 *.egg-info/
 *.egg
+build/
+dist/
+model/__pycache__/
 
 # Unit test / coverage reports
 .cache
