@@ -13,7 +13,7 @@ jobs:
     with:
       framework: tflite
       script_name: note-classifier
-      model_type: multi-label-classification
+      model_type: multi_label_classification
     secrets: 
       VIAM_API_KEY_ID: ${{ secrets.VIAM_DEV_API_KEY_ID }}
       VIAM_API_KEY: ${{ secrets.VIAM_DEV_API_KEY }}
