@@ -1,0 +1,20 @@
+name: Deploy ML Training Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  deploy-staging:
+    uses: viam-modules/common-workflows/.github/workflows/deploy_training_script.yaml@main
+    with:
+      framework: tflite
+      script_name: note-classifier
+      model_type: multi-label-classification
+    secrets: 
+      VIAM_API_KEY_ID: ${{ secrets.VIAM_DEV_API_KEY_ID }}
+      VIAM_API_KEY: ${{ secrets.VIAM_DEV_API_KEY }}
+      VIAM_ORG_ID: ${{ secrets.VIAM_DEV_ORG_ID }}
